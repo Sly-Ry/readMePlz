@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown.js')
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -13,20 +13,33 @@ const questions = () => {
             name: 'name',
             message: 'Enter README.md title/Project title: (Required)',
             validate: nameInput => {
-              if (nameInput) {
-                return true;
-              }
-              else {
-                console.log('Please enter your README.md title/Project Title');
-                return false;
-              }
+                if (nameInput) {
+                    return true;
+                }
+                else {
+                    console.log('Please enter your README.md title/Project Title');
+                    return false;
+                }
             }
-          },
-          {
+        },
+        {
             type: 'confirm',
             name: 'confirmDescription',
-            message: 'Would you like to include a "Desciption" section?',
+            message: 'Would you like to enter some information about your project for a "Description" section?',
             default: true
+          },
+          {
+            type: 'input',
+            name: 'description',
+            message: 'Describe your project:',
+            when: ({ confirmDescription }) => {
+                if (confirmDescription) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
@@ -69,17 +82,66 @@ const questions = () => {
             name: 'confirmQuestions',
             message: 'Would you like to include a "Questions" section?',
             default: true
-        }
+        },
+        {
+            type: 'input',
+            name: 'link',
+            message: 'Enter the GitHub link to your README.md: (Required)',
+            validate: gitLinkInput => {
+              if (gitLinkInput) {
+                return true;
+              }
+              else {
+                console.log('Please enter a Github link.');
+                return false;
+              }
+            }
+          },
     ])
 };
+
+const mockData = {
+    name: 'project',
+    decription: 
+        'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
+    confirmContentsTable: true,
+    confirmInstallation: true,
+    confirmUsage: true,
+    confirmLicense: true,
+    confirmContributing: true,
+    confirmTesting: true,
+    confirmQuestions: true,
+    link: 'projectHub',
+
+};
+
 // TODO: Create a function to write README file
+const writeToFile = (fileName, github, data) => {
+    return `
+    <!DOCTYPE html> 
+    <html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>README.md Demo</title>
+    </head>
 
-
-const writeToFile = (fileName, data) => {}
+    <body>
+        <h1>${fileName}</h1>
+        <h2><a href="https://github.com/${github}">Github</a></h2>
+    </body>
+    </html>
+    `;
+}
 
 // TODO: Create a function to initialize app
 function init() {}
 
 // Function call to initialize app
 init();
-questions();
+fs.writeFile('index.html', writeToFile('fileName', 'github'), err => {
+    if (err) throw err;
+  
+    console.log('README file complete! Check out index.html to see the output!');
+  });
