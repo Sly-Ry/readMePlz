@@ -60,10 +60,10 @@ const questions = () => {
             default: true
         },
         {
-            type: 'confirm',
-            name: 'confirmLicense',
-            message: 'Would you like to add a license to your README.md?',
-            default: true
+            type: 'list',
+            name: 'license',
+            message: 'What kind of license should your project have? (Required)',
+            choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None']
         },
         {
             type: 'confirm',
@@ -136,7 +136,7 @@ const writeToFile = (fileName, github, data) => {
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {};
 
 // Function call to initialize app
 init();
