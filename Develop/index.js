@@ -102,6 +102,7 @@ const questions = () => {
 
 const mockData = {
     name: 'project',
+    confirmDescription: true,
     decription: 
         'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
     confirmContentsTable: true,
@@ -118,34 +119,21 @@ const mockData = {
 // TODO: Create a function to write README file
 const writeToFile = (fileName, github, data) => {
     return `
-    <!DOCTYPE html> 
-    <html lang="en"> 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>README.md Demo</title>
-    </head>
-
-    <body>
-        <h1>${fileName}</h1>
-        <h2><a href="https://github.com/${github}">Github</a></h2>
-    </body>
-    </html>
+        Name: ${fileName}
+        Github: ${github}
     `;
 }
 
+fs.writeFileSync('README.md', writeToFile(), err => {
+    if (err) throw err;
+
+    console.log('README file complete! Check out README.md to see the output!');
+});
+
 // TODO: Create a function to initialize app
 function init() {
-    inquirer
-    .prompt(questions)
-    .then(
-        fs.writeFileSync('README.md', writeToFile('fileName', 'github'), err => {
-            if (err) throw err;
-
-            console.log('README file complete! Check out index.html to see the output!');
-        })
-    );
+    questions()
+    
 };
 
 // Function call to initialize app
