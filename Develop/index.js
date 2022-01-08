@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
+const writeToFile =  require('./src/page-template.js');
 const generateMarkdown = require('./utils/generateMarkdown.js')
 
 // TODO: Create an array of questions for user input
@@ -96,35 +97,32 @@ const questions = () => {
                 return false;
               }
             }
-          },
+        },
     ])
+    .then(data => {
+        console.log(data);
+    });
 };
 
-const mockData = {
-    name: 'project',
-    confirmDescription: true,
-    decription: 
-        'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
-    confirmContentsTable: true,
-    confirmInstallation: true,
-    confirmUsage: true,
-    confirmLicense: true,
-    confirmContributing: true,
-    confirmTesting: true,
-    confirmQuestions: true,
-    link: 'projectHub',
+// const mockData = {
+//     name: 'project',
+//     confirmDescription: true,
+//     decription: 
+//         'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
+//     confirmContentsTable: true,
+//     confirmInstallation: true,
+//     confirmUsage: true,
+//     confirmLicense: true,
+//     confirmContributing: true,
+//     confirmTesting: true,
+//     confirmQuestions: true,
+//     link: 'projectHub',
 
-};
+// };
 
-// TODO: Create a function to write README file
-const writeToFile = (fileName, github, data) => {
-    return `
-        Name: ${fileName}
-        Github: ${github}
-    `;
-}
+const readMePage = writeToFile('ryan', 'github')
 
-fs.writeFileSync('README.md', writeToFile(), err => {
+fs.writeFileSync('README.md', readMePage, err => {
     if (err) throw err;
 
     console.log('README file complete! Check out README.md to see the output!');
