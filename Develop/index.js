@@ -136,12 +136,17 @@ const writeToFile = (fileName, github, data) => {
 }
 
 // TODO: Create a function to initialize app
-function init() {};
+function init() {
+    inquirer
+    .prompt(questions)
+    .then(
+        fs.writeFileSync('README.md', writeToFile('fileName', 'github'), err => {
+            if (err) throw err;
+
+            console.log('README file complete! Check out index.html to see the output!');
+        })
+    );
+};
 
 // Function call to initialize app
 init();
-fs.writeFile('index.html', writeToFile('fileName', 'github'), err => {
-    if (err) throw err;
-  
-    console.log('README file complete! Check out index.html to see the output!');
-  });
