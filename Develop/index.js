@@ -73,15 +73,9 @@ const questions = () => {
             default: true
         },
         {
-            type: 'confirm',
-            name: 'confirmContributing',
-            message: 'Would you like to add "Contributing" guidlines to your README file?',
-            default: true
-        },
-        {
             type: 'input',
-            name: 'link',
-            message: 'Add guidelines',
+            name: 'usage',
+            message: 'Provide instructions for use:',
             validate: confirmContributing => {
                 if (confirmContributing) {
                     return true;
@@ -90,6 +84,58 @@ const questions = () => {
                     return false;
                 }
             }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmPhotos',
+            message: 'Would you like to include a photo in "Usage" section?',
+            default: true
+        },
+        {
+            type: 'input',
+            name: 'usage-alt',
+            message: 'Describe your screenshot:',
+            validate: confirmPhotos => {
+                if (confirmPhotos) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'usage-pic',
+            message: 'Add photo link: [Ex: (assets/images/screenshot.png) ]',
+            validate: confirmPhotos => {
+                if (confirmPhotos) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmContributing',
+            message: 'Would you like to add "Contributing" guidlines to your README file?',
+            default: true
+        },
+        {
+            type: 'input',
+            name: 'guidelines',
+            message: 'Add guidelines for other developers to follow:',
+            validate: confirmContributing => {
+                if (confirmContributing) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        },
         {
             type: 'confirm',
             name: 'confirmTesting',
@@ -135,8 +181,11 @@ const questions = () => {
 //     confirmInstallation: true,
 //     installation: blah blah bruhhh,
 //     confirmUsage: true,
+//     usage-alt: photo,
+//     usage-pic: '',
 //     confirmLicense: true,
 //     confirmContributing: true,
+//     guidelines: "good stuff only" 
 //     confirmTesting: true,
 //     confirmQuestions: true,
 //     link: 'projectHub',
