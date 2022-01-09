@@ -1,4 +1,3 @@
 
-        Name: ryan
-        Github: github
+        Name: ry
     
