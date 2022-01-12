@@ -37,7 +37,7 @@ function generateMarkdown(data) {
   
   ${data.usage}
   
-  ![${usage-alt}](${usage-pic})
+  ![${data.alt}](${data.pic})
   
   
   ## Credits
@@ -77,7 +77,7 @@ function generateMarkdown(data) {
   
   ## Tests
   
-  Go the extra mile and write tests for your application. Then provide examples on how to run them.
+  Go the extra mile and write tests for your application. Then provide examples on how to run them.`
 };
 
 module.exports = generateMarkdown;
