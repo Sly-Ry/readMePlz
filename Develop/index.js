@@ -9,21 +9,21 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the title of your project? (Required)',
+        message: 'What is the title of your project?',
     },
     {
         type: 'input',
         name: 'description',
-        message: 'Describe your project',
+        message: 'Provide a short description of your project:',
     },
     {
         type: 'input',
         name: 'installation',
-        message: 'Explain how to use your project:',
+        message: 'Provide a step-by-step description of how to run your project:',
     },
     {
-        type: "input",
-        name: "usage",
+        type: 'input',
+        name: 'usage',
         message: 'Provide instructions and examples for use:',
     },
     {
@@ -33,16 +33,29 @@ const questions = [
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
     },
     {
-        type: "input",
-        name: "credits",
-        message: `Please add your credits.`,
+        type: 'input',
+        name: 'credits',
+        message: 'Please add your credits: (if any)',
     },
-]
-
-
+    {
+        type: 'input',
+        name: 'name',
+        message: "What's your name?",
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "What's your GitHub User Name?",
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: "What's your email address?",
+    }
+];
 
 // TODO: Create a function to write README file
-const writeToFile = fileContent => {
+const writeToFile = (fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./README.md', fileContent, err => {
             // If an error exists, reject the Promise and send the rror to the Promise's '.catch(), method
