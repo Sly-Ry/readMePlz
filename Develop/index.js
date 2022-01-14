@@ -55,17 +55,16 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-const writeToFile = (fileContent => {
+const writeToFile = (readMeTitle, answers) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./README.md', fileContent, err => {
-            // If an error exists, reject the Promise and send the rror to the Promise's '.catch(), method
+        fs.writeFile(readMeTitle, answers, err => {
+            // Checks for error.
               if (err) {
               reject(err);
-              // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
+              // 'Return' to make sure the Promise doesn't execute resolve().
               return;
             }
-        
-            // if everything went well, resolve the Promise and send the successful data to the `.then()` method
+            // If none, resolve the Promise.
             resolve({
                 ok: true,
                 message: 'File created!'
@@ -74,18 +73,8 @@ const writeToFile = (fileContent => {
     });
 };
 
-// function writeToFile(fileName, data) {
-//     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-// }
-
 // TODO: Create a function to initialize app
-function init() {
-    fileName()
-    .then(addDescription)
-    .then(addContentsTable)
-    .then(generateMarkdown)
-    .then(writeToFile);
-};
+function init() {};
 
 
 // Function call to initialize app
