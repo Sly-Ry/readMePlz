@@ -9,17 +9,17 @@ const questions = [
     {
         type: 'input',
         name: 'name',
-        message: "What's your name?",
+        message: "What's your name? (Required)",
     },
     {
         type: 'input',
         name: 'title',
-        message: 'What is the title of your project?',
+        message: 'What is the title of your project? (Required)',
     },
     {
         type: 'input',
         name: 'description',
-        message: 'Provide a short description of your project:',
+        message: 'Provide a short description of your project: (Required)',
     },
     {
         type: 'input',
@@ -45,7 +45,7 @@ const questions = [
     {
         type: 'input',
         name: 'github',
-        message: "What's your GitHub User Name?",
+        message: "What's your GitHub User Name? (Required)",
     },
     {
         type: 'input',
