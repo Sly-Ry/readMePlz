@@ -54,13 +54,15 @@ function generateMarkdown(answers) {
   
   ## License
   
-  
+  --feature coming soon--
+
   ## Badges
 
+  --feature coming soon--
 
   ## Features
   
-  If your project has a lot of features, consider adding a heading called "Features" and listing them there.
+  --feature coming soon--
   
   
   ### Created by: ${answers.name} 

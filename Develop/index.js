@@ -80,7 +80,7 @@ function init() {
     .prompt(questions)
     // Then take answers and create the ReadMe file using the writeToFile function
     .then(function (answers) {
-        writeToFile('README.md', answers);
+        writeToFile('README.md', generateMarkdown(answers));
     });
 };
 
