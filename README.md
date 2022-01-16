@@ -1,5 +1,5 @@
 # Project: READMEPLZ
-  ### Created by: Ryan Williams | ### Github: Sly-Ry | ### Email: ryan.williams93@aol.com
+  ### Created by: Ryan A Williams | Github: Sly-Ry | Email: ryan.williams93@aol.com
  
   ## Description 
   
