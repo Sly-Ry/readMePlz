@@ -25,7 +25,8 @@
   
   ### Screenshots:
   
-    - ![Screenshot (17)](https://user-images.githubusercontent.com/93052960/149665983-58c09271-2297-438b-9c5e-5fb523486a1d.png)
+    - Open terminalin application:
+      ![Screenshot (17)](https://user-images.githubusercontent.com/93052960/149665983-58c09271-2297-438b-9c5e-5fb523486a1d.png)
     
     - ![Screenshot (18)](https://user-images.githubusercontent.com/93052960/149665995-664f604b-82f4-47fa-a832-c401489ffc9d.png)
     
