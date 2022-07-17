@@ -1,35 +1,29 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-  if (license == 'None') {
-    return 
-  }
-};
+function generateMarkdown(responses, info) {
+  // generate table of contents conditionally
+  let ToC = `## Table of Contents`;
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-  if (license == 'None') {
-    return 
-  }
-};
+  if (responses.installation !== ''){
+    ToC += `* [Installation](#installation)`
+  };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
-  if (license == 'None') {
-    return 
-  }
-};
+  if (responses.usage !== ''){
+    ToC += `* [Usage](#usage)`
+  };
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(answers) {
-  console.log(answers);
-  return `# ${answers.title}
+  if (responses.contributing !== ''){
+    ToC += `* [Contributing](#contributing)`
+  };
+
+  if (responses.tests !== ''){
+    ToC += `* [Tests](#tests)`
+  };
+
+
+  return `# ${responses.title}
 
   ## Description 
   
-  ${answers.description}
+  ${responses.description}
   
   
   ## Table of Contents
@@ -41,16 +35,16 @@ function generateMarkdown(answers) {
 
   ## Installation
   
-  ${answers.installation}
+  ${responses.installation}
   
   
   ## Usage 
 
-  ${answers.usage}
+  ${responses.usage}
 
   ## Credits
   
-  ${answers.credits}
+  ${responses.credits}
   
   ## License
   
@@ -65,9 +59,9 @@ function generateMarkdown(answers) {
   --feature coming soon--
   
   
-  ### Created by: ${answers.name} 
-  ### Github: ${answers.github}
-  ### Email: ${answers.email}
+  ### Created by: ${responses.name} 
+  ### Github: ${responses.github}
+  ### Email: ${responses.email}
   `
 };
 
