@@ -1,7 +1,7 @@
 // packages
 const fs = require('fs');
 const inquirer = require('inquirer');
-const util = require('util');
+// const util = require('util');
 
 // modules
 const api = require('./utils/api');
@@ -74,33 +74,71 @@ const questions = [
 ];
 
 // A function to write README file
-const writeToFile = (fileType, answers) => {
+const writeToFile = (fileType, data) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(fileType, answers, err => {
+        fs.writeFile(fileType, data, err => {
             // Checks for error.
-              if (err) {
-              reject(err);
-              // 'Return' to make sure the Promise doesn't execute resolve().
-              return;
+            if (err) {
+                reject(err);
+                // 'Return' to make sure the Promise doesn't execute resolve().
+                return console.log(err);
             }
             // If none, resolve the Promise.
             resolve({
                 ok: true,
-                message: 'File created.'
+                message: 'README.md file successfully generated.'
             });
         });
     });
 };
 
-// A function to initialize app
-function init() {
-    inquirer
-    // Prompt the user with questions.
-    .prompt(questions)
-    // Then take answers and create the ReadMe file using the writeToFile function
-    .then(function (answers) {
-        writeToFile('README.md', generateMarkdown(answers));
-    });
+// // A function to write README file
+// const writeToFile = (fileType, data) => {
+//     fs.writeFile(fileType, data, err => {
+//         // Checks for error.
+//         if (err) {
+//             return console.log(err);
+//         }
+
+//         // If none, resolve the Promise.
+//         console.log('README.md file successfully generated.');
+//     });
+// };
+
+// const writeFileAsync = util.promisify(writeToFile);
+
+// // A function to initialize app
+// function init() {
+//     inquirer
+//     // Prompt the user with questions.
+//     .prompt(questions)
+//     // Then take data and create the ReadMe file using the writeToFile function
+//     .then(function (data) {
+//         writeToFile('README.md', generateMarkdown(data));
+//     });
+// };
+
+async function init() {
+    try {
+        // prompt Inquirer questions
+        const userResponses = await inquirer.prompt(questions);
+        console.log('Your responses: ', userResponses);
+        console.log('Thank you! Fetching your GitHub data next...');
+
+        // call GitHub api for user info
+        const userInfo = await api.getUser(userResponses);
+        console.log('Your GitHub user info: ', userInfo);
+
+        // pass responses and info to generateMarkdown
+        console.log('Generating your README next...');
+        const markdown = generateMarkdown(userResponses, userInfo);
+        console.log(markdown);
+
+        // markdown to file
+        await writeToFile('ExampleFile', markdown);
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 // Function call to initialize app
