@@ -23,11 +23,22 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'What is your GitHub repository title:',
+        message: "What is the name of your GitHub repo?",
         name: 'repo',
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log('A valid GitHub repo is required for a badge.');
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: 'What is the title of your project?',
+        name: 'title',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log('A valid project title is required for a badge.');
             }
             return true;
         }
@@ -71,6 +82,18 @@ const questions = [
         name: 'license',
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
     },
+    {
+        type: 'input',
+        message: 'Enter email (not required):',
+        name: 'email',
+        default: 'ryan.williams93@aol.com'
+    },
+    {
+        type: 'input',
+        message: "If applicable, provide LinkedIn account.",
+        name: 'linkedIn',
+        default: 'https://www.linkedin.com/in/ryan-williams-338334224/'
+    }
 ];
 
 // A function to write README file
