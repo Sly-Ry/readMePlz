@@ -119,32 +119,6 @@ const writeToFile = (fileType, data) => {
     });
 };
 
-// // A function to write README file
-// const writeToFile = (fileType, data) => {
-//     fs.writeFile(fileType, data, err => {
-//         // Checks for error.
-//         if (err) {
-//             return console.log(err);
-//         }
-
-//         // If none, resolve the Promise.
-//         console.log('README.md file successfully generated.');
-//     });
-// };
-
-// const writeFileAsync = util.promisify(writeToFile);
-
-// // A function to initialize app
-// function init() {
-//     inquirer
-//     // Prompt the user with questions.
-//     .prompt(questions)
-//     // Then take data and create the ReadMe file using the writeToFile function
-//     .then(function (data) {
-//         writeToFile('README.md', generateMarkdown(data));
-//     });
-// };
-
 async function init() {
     try {
         // prompt Inquirer questions
